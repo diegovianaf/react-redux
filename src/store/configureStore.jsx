@@ -16,6 +16,12 @@ function todo(state = INITIAL_STATE, action) {
           action.payload,
         ]
       }
+
+      case 'REMOVE_TASK':
+        const newState = state.tasks.filter((task) => task !== action.payload)
+        return {
+          tasks: newState
+        }
   
     default:
       return state

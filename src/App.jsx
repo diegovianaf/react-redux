@@ -18,13 +18,26 @@ function App() {
     })
   }
 
+  const handleRemove = (task) => {
+    dispatch({
+      type: 'REMOVE_TASK',
+      payload: task,
+    })
+  }
+
   return (
     <>
       <ul>
-        { tasks.map((task) => <li key={task}>{task}</li>) }
+        { 
+          tasks.map((task) =>
+            <li key={task}>
+              {task} - <button onClick={() => handleRemove(task)}>Remove</button>
+            </li>
+          ) 
+        }
       </ul>
       <input type="text" onChange={handleInput} value={inputTask} />
-      <button onClick={handleSubmit}>Add Task</button>
+      <button type="submit" onClick={handleSubmit}>Add Task</button>
     </>
   )
 }
